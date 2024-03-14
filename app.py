@@ -25,18 +25,40 @@ def add_product_to_database(name, price, link):
     cursor.execute(sql, val)
     db.commit()
 
-#Funkcja do czyszczenia danych
+# Funkcja do czyszczenia danych
 def clear_previous_data():
     sql = "TRUNCATE TABLE products"
     cursor.execute(sql)
     db.commit()
 
+# Funkcja do pobierania danych z bazy danych
+def get_products_from_database():
+    cursor.execute("SELECT * FROM products")
+    return cursor.fetchall()
 
 @app.route('/')
 def hello_world():
+    url = "https://www.skapiec.pl/szukaj?query=rower&categoryId="
+    page = urlopen(url)
+    html = page.read().decode("utf-8")
+    soup = BeautifulSoup(html, "html.parser")
+    product_elements = soup.find_all("div", class_="product-box-narrow-container")
+
+    clear_previous_data()
+
+    for product_element in product_elements:
+        link_element = product_element.find("a", class_="product-box-narrow-link")
+        name = link_element.get('aria-label')
+        link = link_element.get('href')
+
+        price_element = product_element.find("span", class_="price")
+        price = price_element.text.strip()
+
+        # Dodawanie produktu do bazy danych MySQL
+        add_product_to_database(name, price, link)
+
     # Pobranie danych z bazy danych
-    cursor.execute("SELECT * FROM products")
-    products = cursor.fetchall()
+    products = get_products_from_database()
 
     return render_template('index.html', products=products)
 
