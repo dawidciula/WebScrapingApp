@@ -1,19 +1,41 @@
 /* Style dla kontenera, w którym będą umieszczone kwadratowe okienka */
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-        }
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Wyśrodkowanie kontenera */
+}
 
-        /* Styl dla pojedynczego kwadratowego okienka */
-        .square {
-            width: 300px; /* Szerokość kwadratu */
-            height: 300px; /* Wysokość kwadratu */
-            margin: 10px; /* Margines między kwadratami */
-            background-color: #f0f0f0; /* Kolor tła kwadratu */
-            border: 1px solid #ccc; /* Grubość i kolor obramowania kwadratu */
-            display: flex;
-            flex-direction: column; /* Układ pionowy */
-            justify-content: center;
-            align-items: center;
-            text-align: center; /* Wyśrodkowanie tekstu */
-        }
+/* Styl dla pojedynczego kwadratowego okienka */
+.square {
+    width: 220px; /* Szerokość kwadratu */
+    height: auto; /* Automatyczna wysokość */
+    margin: 10px; /* Margines między kwadratami */
+    background-color: #f0f0f0; /* Kolor tła kwadratu */
+    border: 1px solid #ccc; /* Grubość i kolor obramowania kwadratu */
+    display: flex;
+    flex-direction: column; /* Układ pionowy */
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Wyśrodkowanie tekstu */
+}
+
+/* Styl dla obrazka w kwadratowym okienku */
+.square img {
+    max-width: 150px; /* Maksymalna szerokość obrazka */
+    max-height: 150px; /* Maksymalna wysokość obrazka */
+    margin-bottom: 10px; /* Margines dolny */
+}
+
+/* Styl dla nazwy produktu w kwadratowym okienku */
+.square a {
+    text-decoration: none; /* Brak podkreślenia */
+    color: #333; /* Kolor tekstu */
+    font-weight: bold; /* Pogrubienie tekstu */
+}
+
+/* Styl dla ceny produktu w kwadratowym okienku */
+.square p {
+    margin-top: 5px; /* Margines górny */
+    color: #666; /* Kolor tekstu */
+    font-size: 14px; /* Rozmiar tekstu */
+}

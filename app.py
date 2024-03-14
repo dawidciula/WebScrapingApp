@@ -19,9 +19,9 @@ db = mysql.connector.connect(
 cursor = db.cursor()
 
 # Funkcja do dodawania danych do bazy
-def add_product_to_database(name, price, link):
-    sql = "INSERT INTO products (name, price, link) VALUES (%s, %s, %s)"
-    val = (name, price, link)
+def add_product_to_database(name, price, link, url_src):
+    sql = "INSERT INTO products (name, price, link, img_url) VALUES (%s, %s, %s, %s)"
+    val = (name, price, link, url_src)
     cursor.execute(sql, val)
     db.commit()
 
@@ -54,8 +54,12 @@ def hello_world():
         price_element = product_element.find("span", class_="price")
         price = price_element.text.strip()
 
+        div_img_element = product_element.find("div", class_="product-box-narrow__photo-box-image")
+        img_element = div_img_element.find('img')
+        img_url = img_element.get('src')
+
         # Dodawanie produktu do bazy danych MySQL
-        add_product_to_database(name, price, link)
+        add_product_to_database(name, price, link, img_url)
 
     # Pobranie danych z bazy danych
     products = get_products_from_database()
