@@ -1,0 +1,19 @@
+/* Style dla kontenera, w którym będą umieszczone kwadratowe okienka */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* Styl dla pojedynczego kwadratowego okienka */
+        .square {
+            width: 300px; /* Szerokość kwadratu */
+            height: 300px; /* Wysokość kwadratu */
+            margin: 10px; /* Margines między kwadratami */
+            background-color: #f0f0f0; /* Kolor tła kwadratu */
+            border: 1px solid #ccc; /* Grubość i kolor obramowania kwadratu */
+            display: flex;
+            flex-direction: column; /* Układ pionowy */
+            justify-content: center;
+            align-items: center;
+            text-align: center; /* Wyśrodkowanie tekstu */
+        }

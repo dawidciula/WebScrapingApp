@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Products</title>
+</head>
+<body>
+    <h1>Produkty pobrane ze strony skapiec.pl</h1>
+    <div class="container">
+        {% for product in products %}
+            <div class="square">
+                <a href="{{ product[3] }}">{{ product[1] }}</a>
+                <p>{{ product[2] }}</p> <!-- Cena pod nazwą produktu -->
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
