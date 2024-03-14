@@ -7,10 +7,11 @@
     <title>Products</title>
 </head>
 <body>
-    <h1>Produkty pobrane ze strony skapiec.pl</h1>
+   <h1>Produkty pobrane ze strony skapiec.pl</h1>
     <div class="container">
         {% for product in products %}
             <div class="square">
+                <img src="{{ product[4] }}" alt="{{ product[1] }}" style="max-width: 100%; max-height: 100%;">
                 <a href="{{ product[3] }}">{{ product[1] }}</a>
                 <p>{{ product[2] }}</p> <!-- Cena pod nazwą produktu -->
             </div>
