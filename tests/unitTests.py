@@ -16,12 +16,12 @@ def test_add_product_to_database(clean_database):
     assert products[0][3] == "test link"
     assert products[0][4] == "test url"
 
+
 def test_clear_previous_data(clean_database):
     add_product_to_database("test product name",
                             "test product price", "test link", "test url")
     products_before_clear = get_products_from_database()
     assert len(products_before_clear) == 1
-    print("PRZED", products_before_clear)
+    clear_previous_data()
     products_after_clear = get_products_from_database()
     assert len(products_after_clear) == 0
-

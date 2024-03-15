@@ -18,12 +18,14 @@ db = mysql.connector.connect(
 
 cursor = db.cursor()
 
+
 # Funkcja do dodawania danych do bazy
 def add_product_to_database(name, price, link, url_src):
     sql = "INSERT INTO products (name, price, link, img_url) VALUES (%s, %s, %s, %s)"
     val = (name, price, link, url_src)
     cursor.execute(sql, val)
     db.commit()
+
 
 # Funkcja do czyszczenia danych
 def clear_previous_data():
@@ -35,6 +37,7 @@ def clear_previous_data():
 def get_products_from_database():
     cursor.execute("SELECT * FROM products")
     return cursor.fetchall()
+
 
 @app.route('/')
 def hello_world():
@@ -65,6 +68,7 @@ def hello_world():
     products = get_products_from_database()
 
     return render_template('index.html', products=products)
+
 
 if __name__ == '__main__':
     app.run()
